@@ -121,29 +121,47 @@ nav a.active {
     padding: 40px 60px;
 }
 
-.project-card, .exp-card {
-    background: var(--card);
+/* Project card: side-by-side layout */
+.project-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
     padding: 25px;
-    margin-bottom: 25px;
-    border-radius: 10px;
+    background: var(--card);
     border: 1px solid var(--border);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
+    border-radius: 12px;
+    margin-bottom: 25px;
 }
 
-/* Hover effect */
-.project-card:hover,
-.exp-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+/* Left text section */
+.project-info {
+    width: 55%;
 }
 
+/* Right image */
 .project-img {
-    width: 70%;                  /* Reduce image size */
-    max-width: 300px;            /* Limit max width */
-    display: block;              /* Allows centering */
-    margin: 0 auto 15px auto;    /* Center + add bottom spacing */
-    border-radius: 12px;         /* Rounded corners */
-    object-fit: cover;           /* Clean aspect ratio */
+    width: 40%;
+    max-width: 260px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .project-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-info {
+        width: 100%;
+    }
+
+    .project-img {
+        width: 80%;
+        max-width: 300px;
+    }
 }
 
 /* Skills List */
