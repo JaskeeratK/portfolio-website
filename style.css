@@ -19,10 +19,11 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background: var(--bg);
+    background: radial-gradient(circle at top, #1a1a2e, #0f0f0f 40%) fixed;
     color: var(--text);
     transition: background 0.3s ease, color 0.3s ease;
 }
+
 
 a {
     color: var(--accent);
