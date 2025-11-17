@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+}
+
+nav a.active {
+    color: #0077ff;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px;
+}
+
+.hero-text {
+    width: 50%;
+}
+
+.hero-text h1 span {
+    color: #0077ff;
+}
+
+.btn, .btn-outline {
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn {
+    background: #0077ff;
+    color: white;
+}
+
+.btn-outline {
+    border: 2px solid #0077ff;
+    color: #0077ff;
+}
+
+.projects-section, .about-section {
+    padding: 40px 60px;
+}
+
+.project-card, .exp-card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.skills-list li {
+    margin-bottom: 10px;
+}
