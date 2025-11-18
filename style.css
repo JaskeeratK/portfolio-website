@@ -1,23 +1,25 @@
-
+/* ---------------------------------- */
+/* THEME VARIABLES */
+/* ---------------------------------- */
 
 :root {
-    --bg: radial-gradient(circle at top, #f9f9f9, #dfe6f7 40%);
-    --text: #222;
-    --card: rgba(255, 255, 255, 0.4);
-    --accent: #0077ff;
-    --nav-bg: rgba(255,255,255,0.4);
-    --border: rgba(255,255,255,0.3);
-    --blur: blur(14px);
+    --bg-gradient: linear-gradient(135deg, #0f0f0f, #1b1b2f, #16213e);
+    --text: #ffffff;
+    --accent: #4aa8ff;
+
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.25);
+    --glass-blur: blur(20px);
 }
 
 .dark-mode {
-    --bg: radial-gradient(circle at top, #1a1a2e, #0f0f0f 40%);
+    --bg-gradient: linear-gradient(135deg, #0a0a0a, #0d1726, #111827);
     --text: #e8e8e8;
-    --card: rgba(255, 255, 255, 0.07);
     --accent: #4aa8ff;
-    --nav-bg: rgba(255,255,255,0.06);
-    --border: rgba(255,255,255,0.15);
-    --blur: blur(16px);
+
+    --glass-bg: rgba(255,255,255,0.08);
+    --glass-border: rgba(255,255,255,0.18);
+    --glass-blur: blur(22px);
 }
 
 /* ---------------------------------- */
@@ -27,7 +29,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background: var(--bg);
+    background: var(--bg-gradient);
     background-attachment: fixed;
     color: var(--text);
     transition: background 0.3s ease, color 0.3s ease;
@@ -38,7 +40,7 @@ a {
 }
 
 /* ---------------------------------- */
-/* NAVBAR */
+/* NAVBAR — Glassmorphism */
 /* ---------------------------------- */
 
 nav {
@@ -47,12 +49,11 @@ nav {
     align-items: center;
     padding: 20px 60px;
 
-    background: var(--nav-bg);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
 
-    border-bottom: 1px solid var(--border);
-    transition: background 0.3s ease, border 0.3s ease;
+    border-bottom: 1px solid var(--glass-border);
 }
 
 nav ul {
@@ -65,7 +66,6 @@ nav a {
     text-decoration: none;
     font-weight: 600;
     color: var(--text);
-    transition: color 0.3s ease;
 }
 
 nav a.active {
@@ -90,22 +90,25 @@ nav a.active {
 }
 
 /* ---------------------------------- */
-/* HERO SECTION (Glassmorphism) */
+/* HERO SECTION — Real Frosted Glass */
 /* ---------------------------------- */
 
 .hero {
     display: flex;
     justify-content: space-between;
-    padding: 70px 60px;
     align-items: center;
     gap: 40px;
 
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 20px;
+    padding: 70px 60px;
     margin: 40px 60px;
-    border: 1px solid var(--border);
+
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.45);
 }
 
 .hero-text {
@@ -115,6 +118,7 @@ nav a.active {
 .hero-text h1 {
     font-size: 42px;
     font-weight: bold;
+    color: var(--text);
 }
 
 .hero-text h1 span {
@@ -149,59 +153,89 @@ nav a.active {
 }
 
 /* ---------------------------------- */
-/* CONTENT SECTIONS */
+/* PAGE SECTIONS */
 /* ---------------------------------- */
 
-.projects-section, 
+.projects-section,
 .about-section {
     padding: 40px 60px;
 }
 
 /* ---------------------------------- */
-/* PROJECT CARDS (GLASSMORPHISM) */
+/* PROJECT CARDS — Full Glassmorphism */
 /* ---------------------------------- */
 
 .project-card {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 25px;
-    padding: 25px;
 
-    background: var(--card);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
+    padding: 30px;
+    margin-bottom: 35px;
 
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    box-shadow: 0 4px 22px rgba(0,0,0,0.25);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
 
-    margin-bottom: 25px;
-    transition: transform 0.3s ease;
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.40);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.55);
 }
+
+/* Glow border like the screenshot */
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 25px;
+    padding: 1px;
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.4),
+        rgba(255,255,255,0.05)
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+}
+
+/* Project text */
 
 .project-info {
     width: 55%;
+    color: var(--text);
 }
 
-/* Image (small preview but click → full image) */
+/* ---------------------------------- */
+/* IMAGE PREVIEW */
+/* ---------------------------------- */
 
 .project-img {
     width: 40%;
     max-width: 260px;
-    height: 160px;
+    height: 150px;
+
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 18px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.15);
 }
 
 /* ---------------------------------- */
-/* MOBILE RESPONSIVE */
+/* MOBILE RESPONSIVENESS */
 /* ---------------------------------- */
 
 @media (max-width: 768px) {
@@ -229,16 +263,15 @@ nav a.active {
         width: 75%;
     }
 
-    .projects-section, 
+    .projects-section,
     .about-section {
         padding: 20px;
     }
 
     .project-card {
         flex-direction: column;
-        padding: 20px;
-        gap: 20px;
         text-align: center;
+        padding: 25px;
     }
 
     .project-info {
@@ -247,13 +280,13 @@ nav a.active {
 
     .project-img {
         width: 90%;
-        max-width: 300px;
-        height: 180px;
+        height: 200px;
+        max-width: 330px;
     }
 }
 
 /* ---------------------------------- */
-/* SKILLS LIST */
+/* SKILLS */
 /* ---------------------------------- */
 
 .skills-list li {
@@ -273,7 +306,7 @@ nav a.active {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.85);
 }
 
 .modal-content {
