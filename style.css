@@ -35,11 +35,16 @@
 /* GLOBAL BACKGROUND */
 /* ---------------------------------- */
 
+/* ---------------------------------- */
+/* GLOBAL BACKGROUND */
+/* ---------------------------------- */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     color: var(--text);
 
+    /* Base gradient */
     background: radial-gradient(circle at top, var(--grad-3), var(--grad-2), var(--grad-1));
     background-attachment: fixed;
 
@@ -47,40 +52,27 @@ body {
     overflow-x: hidden;
 }
 
-/* STAR LAYER (fixed) */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-
-    background: url("https://i.imgur.com/VqC5z9L.png") repeat;
-    opacity: 0.22;
-
-    pointer-events: none;
-    animation: starFloat 35s linear infinite;
-}
-
-/* GLOW LAYER */
-/* NEBULA BACKGROUND LAYER */
+/* NEBULA LAYER (BEHIND EVERYTHING) */
 body::after {
     content: "";
     position: fixed;
     inset: 0;
+
+    background: url("assets/images/nebula.png") center/cover no-repeat;
+    opacity: 0.32;
+
+    filter: blur(18px);
+
     pointer-events: none;
 
-    background: url("/portfolio-website/assets/images/nebula.png") center/cover no-repeat;
-    opacity: 0.38;
+    /* push UNDER page */
+    z-index: -5;
 
-    filter: blur(20px);
-    animation: glowShift 18s ease-in-out infinite alternate;
+    animation: glowShift 20s ease-in-out infinite alternate;
 }
 
-
-/* Animations */
-@keyframes starFloat {
-    from { transform: translateY(0); }
-    to   { transform: translateY(-800px); }
-}
+/* Remove all star animations */
+@keyframes starFloat {}
 
 @keyframes glowShift {
     0%   { transform: scale(1); }
