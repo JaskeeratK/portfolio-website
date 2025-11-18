@@ -151,9 +151,40 @@ nav a.active {
 
 
 /* Mobile responsive */
+/* Global mobile adjustments */
 @media (max-width: 768px) {
+
+    nav {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-img img {
+        width: 70%;
+    }
+
+    .projects-section, 
+    .about-section {
+        padding: 20px;
+    }
+
     .project-card {
         flex-direction: column;
+        padding: 20px;
+        gap: 20px;
         text-align: center;
     }
 
@@ -162,10 +193,12 @@ nav a.active {
     }
 
     .project-img {
-        width: 80%;
+        width: 90%;
         max-width: 300px;
+        height: 180px;
     }
 }
+
 
 /* Skills List */
 .skills-list li {
