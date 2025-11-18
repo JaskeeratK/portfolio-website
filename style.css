@@ -61,19 +61,20 @@ body::before {
 }
 
 /* GLOW LAYER */
+/* NEBULA BACKGROUND LAYER */
 body::after {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
 
-    background: radial-gradient(circle at 20% 30%, rgba(80,120,255,0.18), transparent 60%),
-                radial-gradient(circle at 80% 70%, rgba(255,120,180,0.15), transparent 60%);
-    filter: blur(45px);
-    opacity: 0.55;
+    background: url("/portfolio-website/assets/images/nebula.png") center/cover no-repeat;
+    opacity: 0.38;
 
+    filter: blur(20px);
     animation: glowShift 18s ease-in-out infinite alternate;
 }
+
 
 /* Animations */
 @keyframes starFloat {
