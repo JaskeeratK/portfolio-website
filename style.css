@@ -11,7 +11,7 @@
     --glass-border: rgba(255, 255, 255, 0.25);
     --glass-blur: blur(20px);
 
-    /* Background layers */
+    /* Background gradient */
     --grad-1: #0f0f0f;
     --grad-2: #1b1b2f;
     --grad-3: #16213e;
@@ -30,8 +30,9 @@
     --grad-3: #111827;
 }
 
+
 /* ---------------------------------- */
-/* GLOBAL BACKGROUND (with particles + stars) */
+/* GLOBAL BACKGROUND */
 /* ---------------------------------- */
 
 body {
@@ -39,7 +40,6 @@ body {
     font-family: Arial, sans-serif;
     color: var(--text);
 
-    /* 3-layer gradient for depth */
     background: radial-gradient(circle at top, var(--grad-3), var(--grad-2), var(--grad-1));
     background-attachment: fixed;
 
@@ -47,21 +47,20 @@ body {
     overflow-x: hidden;
 }
 
-/* STAR FIELD LAYER */
+/* STAR LAYER (fixed) */
 body::before {
     content: "";
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    inset: 0;
+
+    background: url("https://i.imgur.com/VqC5z9L.png") repeat;
+    opacity: 0.22;
+
     pointer-events: none;
-
-    background: url("https://i.imgur.com/9bqS1mQ.png"); /* tiny stars texture */
-    opacity: 0.18;
-
     animation: starFloat 35s linear infinite;
 }
 
-/* PARTICLE GLOW LAYER */
+/* GLOW LAYER */
 body::after {
     content: "";
     position: fixed;
@@ -70,8 +69,7 @@ body::after {
 
     background: radial-gradient(circle at 20% 30%, rgba(80,120,255,0.18), transparent 60%),
                 radial-gradient(circle at 80% 70%, rgba(255,120,180,0.15), transparent 60%);
-
-    filter: blur(40px);
+    filter: blur(45px);
     opacity: 0.55;
 
     animation: glowShift 18s ease-in-out infinite alternate;
@@ -84,8 +82,8 @@ body::after {
 }
 
 @keyframes glowShift {
-    0%   { transform: scale(1) translate(0,0); }
-    100% { transform: scale(1.2) translate(10px, -20px); }
+    0%   { transform: scale(1); }
+    100% { transform: scale(1.2) translate(12px, -25px); }
 }
 
 
@@ -97,10 +95,12 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding: 20px 60px;
 
     background: var(--glass-bg);
     border-bottom: 1px solid var(--glass-border);
+
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
 
@@ -109,9 +109,25 @@ nav {
     z-index: 20;
 }
 
-nav a {
+nav ul {
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
     color: var(--text);
+    padding: 8px 14px;
+    border-radius: 8px;
     font-weight: 600;
+    transition: 0.25s;
+}
+
+nav ul li a:hover {
+    background: rgba(255,255,255,0.18);
 }
 
 nav a.active {
@@ -127,137 +143,11 @@ nav a.active {
     cursor: pointer;
 }
 
-/* ---------------------------------- */
-/* HERO (Glass Container) */
-/* ---------------------------------- */
-
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin: 40px 60px;
-    padding: 60px;
-    border-radius: 25px;
-
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-
-    box-shadow: 0 8px 25px rgba(0,0,0,0.55);
-}
 
 /* ---------------------------------- */
-/* PROJECTS SECTION */
-/* ---------------------------------- */
-
-.projects-section {
-    padding: 40px 60px;
-}
-
-.project-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
-
-    padding: 30px;
-
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 25px;
-
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-
-    box-shadow: 0 8px 25px rgba(0,0,0,0.40);
-    margin-bottom: 30px;
-}
-
-.project-img {
-    width: 40%;
-    max-width: 260px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 18px;
-    cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.2);
-}
-
-/* ---------------------------------- */
-/* ABOUT SECTION (Upgraded Aesthetic) */
-/* ---------------------------------- */
-
-.about-section {
-    padding: 40px 60px;
-}
-
-.about-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-
-    padding: 40px;
-    border-radius: 25px;
-
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-
-    box-shadow: 0 8px 25px rgba(0,0,0,0.45);
-
-    max-width: 900px;
-    margin: auto;
-}
-
-.about-card h2 {
-    text-align: center;
-    font-size: 32px;
-    color: var(--accent);
-    margin-bottom: 20px;
-}
-
-.about-card p {
-    font-size: 18px;
-    line-height: 1.7;
-    color: var(--text);
-}
-
-
-/* ---------------------------------- */
-/* MOBILE RESPONSIVE */
-/* ---------------------------------- */
-
-@media (max-width: 768px) {
-
-    nav {
-        padding: 15px 20px;
-    }
-
-    .hero {
-        flex-direction: column;
-        margin: 20px;
-        padding: 30px;
-        text-align: center;
-    }
-
-    .project-card {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .project-img {
-        width: 90%;
-        height: 200px;
-    }
-
-    .about-card {
-        padding: 25px;
-        margin: 20px;
-    }
-}
-
 /* BUTTONS */
+/* ---------------------------------- */
+
 .btn, .btn-outline {
     padding: 12px 22px;
     border-radius: 10px;
@@ -292,6 +182,164 @@ nav a.active {
     color: #fff;
 }
 
+
+/* ---------------------------------- */
+/* HERO */
+/* ---------------------------------- */
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 40px 60px;
+    padding: 60px;
+    border-radius: 25px;
+
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.55);
+}
+
+.hero-text {
+    width: 50%;
+}
+
+.hero-text h1 span {
+    color: var(--accent);
+}
+
+
+/* ---------------------------------- */
+/* PROJECTS */
+/* ---------------------------------- */
+
+.projects-section {
+    padding: 40px 60px;
+}
+
+.project-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+
+    padding: 30px;
+
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.40);
+    margin-bottom: 30px;
+}
+
+.project-info { width: 55%; }
+
+.project-img {
+    width: 40%;
+    max-width: 260px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 18px;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+
+/* ---------------------------------- */
+/* ABOUT PAGE */
+/* ---------------------------------- */
+
+.about-section {
+    padding: 40px 60px;
+}
+
+.about-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+
+    padding: 40px;
+    border-radius: 25px;
+
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.45);
+
+    max-width: 900px;
+    margin: auto;
+}
+
+.about-card h2 {
+    text-align: center;
+    font-size: 32px;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.skills-grid span {
+    background: rgba(255,255,255,0.12);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+
+    backdrop-filter: blur(18px);
+}
+
+
+/* ---------------------------------- */
+/* MOBILE */
+/* ---------------------------------- */
+
+@media (max-width: 768px) {
+
+    nav {
+        padding: 15px 20px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        margin: 20px;
+        padding: 30px;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .project-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-img {
+        width: 90%;
+        height: 200px;
+    }
+
+    .about-card {
+        padding: 25px;
+        margin: 20px;
+    }
+}
+
+
 /* ---------------------------------- */
 /* IMAGE MODAL */
 /* ---------------------------------- */
@@ -299,13 +347,12 @@ nav a.active {
 .modal {
     display: none;
     position: fixed;
-    z-index: 999;
     inset: 0;
+    z-index: 999;
     background: rgba(0,0,0,0.85);
 }
 
 .modal-content {
-    display: block;
     margin: auto;
     max-width: 90%;
     max-height: 80vh;
@@ -317,6 +364,6 @@ nav a.active {
     top: 20px;
     right: 30px;
     font-size: 40px;
-    cursor: pointer;
     color: white;
+    cursor: pointer;
 }
