@@ -257,6 +257,40 @@ nav a.active {
     }
 }
 
+/* BUTTONS */
+.btn, .btn-outline {
+    padding: 12px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 20px;
+
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+
+    transition: 0.2s ease-in-out;
+}
+
+.btn {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+
+.btn-outline:hover {
+    background: var(--accent);
+    color: #fff;
+}
 
 /* ---------------------------------- */
 /* IMAGE MODAL */
