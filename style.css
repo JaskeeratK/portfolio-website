@@ -3,44 +3,94 @@
 /* ---------------------------------- */
 
 :root {
-    --bg-gradient: linear-gradient(135deg, #0f0f0f, #1b1b2f, #16213e);
     --text: #ffffff;
     --accent: #4aa8ff;
 
+    /* Glass */
     --glass-bg: rgba(255, 255, 255, 0.12);
     --glass-border: rgba(255, 255, 255, 0.25);
     --glass-blur: blur(20px);
+
+    /* Background layers */
+    --grad-1: #0f0f0f;
+    --grad-2: #1b1b2f;
+    --grad-3: #16213e;
 }
 
 .dark-mode {
-    --bg-gradient: linear-gradient(135deg, #0a0a0a, #0d1726, #111827);
     --text: #e8e8e8;
     --accent: #4aa8ff;
 
     --glass-bg: rgba(255,255,255,0.08);
     --glass-border: rgba(255,255,255,0.18);
     --glass-blur: blur(22px);
+
+    --grad-1: #0a0a0a;
+    --grad-2: #0d1726;
+    --grad-3: #111827;
 }
 
 /* ---------------------------------- */
-/* GLOBAL */
+/* GLOBAL BACKGROUND (with particles + stars) */
 /* ---------------------------------- */
 
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    background: var(--bg-gradient);
-    background-attachment: fixed;
+    font-family: Arial, sans-serif;
     color: var(--text);
-    transition: background 0.3s ease, color 0.3s ease;
+
+    /* 3-layer gradient for depth */
+    background: radial-gradient(circle at top, var(--grad-3), var(--grad-2), var(--grad-1));
+    background-attachment: fixed;
+
+    position: relative;
+    overflow-x: hidden;
 }
 
-a {
-    color: var(--accent);
+/* STAR FIELD LAYER */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+
+    background: url("https://i.imgur.com/9bqS1mQ.png"); /* tiny stars texture */
+    opacity: 0.18;
+
+    animation: starFloat 35s linear infinite;
 }
+
+/* PARTICLE GLOW LAYER */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background: radial-gradient(circle at 20% 30%, rgba(80,120,255,0.18), transparent 60%),
+                radial-gradient(circle at 80% 70%, rgba(255,120,180,0.15), transparent 60%);
+
+    filter: blur(40px);
+    opacity: 0.55;
+
+    animation: glowShift 18s ease-in-out infinite alternate;
+}
+
+/* Animations */
+@keyframes starFloat {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-800px); }
+}
+
+@keyframes glowShift {
+    0%   { transform: scale(1) translate(0,0); }
+    100% { transform: scale(1.2) translate(10px, -20px); }
+}
+
 
 /* ---------------------------------- */
-/* NAVBAR — Glassmorphism */
+/* NAVBAR */
 /* ---------------------------------- */
 
 nav {
@@ -50,29 +100,23 @@ nav {
     padding: 20px 60px;
 
     background: var(--glass-bg);
+    border-bottom: 1px solid var(--glass-border);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
 
-    border-bottom: 1px solid var(--glass-border);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
 }
 
 nav a {
-    text-decoration: none;
-    font-weight: 600;
     color: var(--text);
+    font-weight: 600;
 }
 
 nav a.active {
     color: var(--accent);
 }
-
-/* Dark Mode Toggle Button */
 
 .theme-toggle {
     background: var(--accent);
@@ -81,161 +125,107 @@ nav a.active {
     padding: 10px 14px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
-    transition: opacity 0.3s ease;
-}
-
-.theme-toggle:hover {
-    opacity: 0.8;
 }
 
 /* ---------------------------------- */
-/* HERO SECTION — Real Frosted Glass */
+/* HERO (Glass Container) */
 /* ---------------------------------- */
 
 .hero {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 40px;
+    justify-content: space-between;
 
-    padding: 70px 60px;
     margin: 40px 60px;
+    padding: 60px;
+    border-radius: 25px;
 
     background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
 
-    border: 1px solid var(--glass-border);
-    border-radius: 25px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.45);
-}
-
-.hero-text {
-    width: 50%;
-}
-
-.hero-text h1 {
-    font-size: 42px;
-    font-weight: bold;
-    color: var(--text);
-}
-
-.hero-text h1 span {
-    color: var(--accent);
-}
-
-.hero-text p {
-    font-size: 18px;
-    margin-top: 15px;
-    line-height: 1.6;
-}
-
-/* Buttons */
-
-.btn, .btn-outline {
-    padding: 12px 22px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 20px;
-}
-
-.btn {
-    background: var(--accent);
-    color: white;
-}
-
-.btn-outline {
-    border: 2px solid var(--accent);
-    color: var(--accent);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.55);
 }
 
 /* ---------------------------------- */
-/* PAGE SECTIONS */
+/* PROJECTS SECTION */
 /* ---------------------------------- */
 
-.projects-section,
-.about-section {
+.projects-section {
     padding: 40px 60px;
 }
 
-/* ---------------------------------- */
-/* PROJECT CARDS — Full Glassmorphism */
-/* ---------------------------------- */
-
 .project-card {
-    position: relative;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 25px;
 
     padding: 30px;
-    margin-bottom: 35px;
 
     background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
 
-    border: 1px solid var(--glass-border);
-    border-radius: 25px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.40);
-
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
 }
-
-.project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 35px rgba(0,0,0,0.55);
-}
-
-/* Glow border like the screenshot */
-.project-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 25px;
-    padding: 1px;
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.4),
-        rgba(255,255,255,0.05)
-    );
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
-}
-
-/* Project text */
-
-.project-info {
-    width: 55%;
-    color: var(--text);
-}
-
-/* ---------------------------------- */
-/* IMAGE PREVIEW */
-/* ---------------------------------- */
 
 .project-img {
     width: 40%;
     max-width: 260px;
     height: 150px;
-
     object-fit: cover;
     border-radius: 18px;
     cursor: pointer;
-
-    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
 /* ---------------------------------- */
-/* MOBILE RESPONSIVENESS */
+/* ABOUT SECTION (Upgraded Aesthetic) */
+/* ---------------------------------- */
+
+.about-section {
+    padding: 40px 60px;
+}
+
+.about-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+
+    padding: 40px;
+    border-radius: 25px;
+
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.45);
+
+    max-width: 900px;
+    margin: auto;
+}
+
+.about-card h2 {
+    text-align: center;
+    font-size: 32px;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.about-card p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text);
+}
+
+
+/* ---------------------------------- */
+/* MOBILE RESPONSIVE */
 /* ---------------------------------- */
 
 @media (max-width: 768px) {
@@ -244,74 +234,45 @@ nav a.active {
         padding: 15px 20px;
     }
 
-    nav ul {
-        gap: 15px;
-    }
-
     .hero {
         flex-direction: column;
-        text-align: center;
-        padding: 40px 20px;
         margin: 20px;
-    }
-
-    .hero-text {
-        width: 100%;
-    }
-
-    .hero-img img {
-        width: 75%;
-    }
-
-    .projects-section,
-    .about-section {
-        padding: 20px;
+        padding: 30px;
+        text-align: center;
     }
 
     .project-card {
         flex-direction: column;
         text-align: center;
-        padding: 25px;
-    }
-
-    .project-info {
-        width: 100%;
     }
 
     .project-img {
         width: 90%;
         height: 200px;
-        max-width: 330px;
+    }
+
+    .about-card {
+        padding: 25px;
+        margin: 20px;
     }
 }
 
-/* ---------------------------------- */
-/* SKILLS */
-/* ---------------------------------- */
-
-.skills-list li {
-    margin-bottom: 10px;
-}
 
 /* ---------------------------------- */
-/* FULLSCREEN IMAGE MODAL */
+/* IMAGE MODAL */
 /* ---------------------------------- */
 
 .modal {
     display: none;
     position: fixed;
     z-index: 999;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.85);
 }
 
 .modal-content {
-    margin: auto;
     display: block;
+    margin: auto;
     max-width: 90%;
     max-height: 80vh;
     border-radius: 12px;
@@ -320,9 +281,8 @@ nav a.active {
 .close {
     position: absolute;
     top: 20px;
-    right: 35px;
-    color: white;
+    right: 30px;
     font-size: 40px;
-    font-weight: bold;
     cursor: pointer;
+    color: white;
 }
