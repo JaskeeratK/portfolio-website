@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,4 +41,246 @@
 
 </body>
 </html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaskeerat Kaur | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header>
+        <nav>
+            <h2 class="logo">Jaskeerat Kaur</h2>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
 
+    <!-- HOME / HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content fade-in">
+            <h1>Hi, I'm <span>Jaskeerat Kaur</span></h1>
+            <p class="hero-subtitle">AI-Focused CSE Student</p>
+            <p class="hero-description">
+                Specializing in RAG systems, LLM integration, FastAPI backends, and ML/DL development. 
+                Awarded Best Data Scientist at Thapar Summer School.
+            </p>
+            <div class="buttons">
+                <a href="#projects" class="btn">View Projects</a>
+                <a href="#contact" class="btn-outline">Contact Me</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <h2 class="section-title" data-animate>About Me</h2>
+            <div class="about-card glass-card" data-animate>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            I'm an AI-focused CSE student specializing in Retrieval-Augmented Generation (RAG),
+                            LLM workflows, FastAPI backend development, and ML/DL pipelines.
+                            I build production-ready intelligent systems using ChromaDB, Pinecone,
+                            Weaviate, Groq, Streamlit, TensorFlow, and scikit-learn.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SKILLS -->
+                <div class="skills-section">
+                    <h3>Technical Skills</h3>
+                    <div class="skills-grid">
+                        <span>Python (Proficient)</span>
+                        <span>C++ (Intermediate)</span>
+                        <span>FastAPI / REST APIs</span>
+                        <span>TensorFlow / Keras / Sklearn</span>
+                        <span>LLM Integration (Groq, Whisper, TTS)</span>
+                        <span>MongoDB / ChromaDB / Weaviate</span>
+                        <span>Postman</span>
+                        <span>Git / GitHub</span>
+                    </div>
+                </div>
+
+                <!-- EXPERIENCE -->
+                <div class="experience-section">
+                    <h3>Experience</h3>
+                    <div class="exp-timeline">
+                        <div class="exp-card" data-animate>
+                            <div class="exp-header">
+                                <h4>AI Intern — Smartern X</h4>
+                                <span class="exp-date">June 2025 – Aug 2025</span>
+                            </div>
+                            <p class="exp-meta">Remote</p>
+                            <ul>
+                                <li>Built RAG pipelines using ChromaDB, Pinecone & Weaviate</li>
+                                <li>Developed FastAPI backends for AI Trainer/Coach</li>
+                                <li>Integrated Groq Whisper STT & Cartesia TTS</li>
+                                <li>Optimized LLaMA inference & embedding workflows</li>
+                            </ul>
+                        </div>
+                        <div class="exp-card" data-animate>
+                            <div class="exp-header">
+                                <h4>ML Trainee — Thapar Summer School</h4>
+                                <span class="exp-date">June 2025 – July 2025</span>
+                            </div>
+                            <p class="exp-meta">Patiala</p>
+                            <ul>
+                                <li>Awarded Best Data Scientist (out of 180+ participants)</li>
+                                <li>Built ML/DL models using sklearn, PyCaret, TensorFlow</li>
+                                <li>Worked on RAG NLP pipelines and summarization tasks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects-section">
+        <div class="section-container">
+            <h2 class="section-title" data-animate>Featured Projects</h2>
+            
+            <!-- RAG Project -->
+            <div class="project-card glass-card" data-animate>
+                <div class="project-info">
+                    <h3>RAG Application with ChromaDB, Groq & Streamlit</h3>
+                    <p>End-to-end RAG system using ChromaDB for vector storage and Groq LLaMA inference.</p>
+                    <ul>
+                        <li>Document chunking & embedding generation</li>
+                        <li>Optimized semantic retrieval</li>
+                        <li>Real-time Q&A UI with Streamlit</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span>ChromaDB</span>
+                        <span>Groq</span>
+                        <span>Streamlit</span>
+                        <span>Python</span>
+                    </div>
+                </div>
+                <div class="project-img-wrapper">
+                    <img src="assets/images/rag-app02.png" class="project-img" alt="RAG Application">
+                </div>
+            </div>
+
+            <!-- Stock Predictor -->
+            <div class="project-card glass-card" data-animate>
+                <div class="project-info">
+                    <h3>Stock Price Prediction & Visualization App</h3>
+                    <p>Stock trends visualization and ML-based forecasting using Streamlit.</p>
+                    <ul>
+                        <li>Live market data integration</li>
+                        <li>Interactive charts & future predictions</li>
+                        <li>Deployed on Streamlit Cloud</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span>Machine Learning</span>
+                        <span>Streamlit</span>
+                        <span>Data Viz</span>
+                        <span>Finance</span>
+                    </div>
+                </div>
+                <div class="project-img-wrapper">
+                    <img src="assets/images/stock-price-prediction-1 (1).png" class="project-img" alt="Stock App">
+                </div>
+            </div>
+
+            <!-- Leaf Disease -->
+            <div class="project-card glass-card" data-animate>
+                <div class="project-info">
+                    <h3>Leaf Disease Detection System</h3>
+                    <p>CNN-based classifier trained on PlantVillage dataset for 38+ plant diseases.</p>
+                    <ul>
+                        <li>Image augmentation & preprocessing</li>
+                        <li>High-accuracy predictions</li>
+                        <li>Upload-based prediction UI</li>
+                    </ul>
+                    <div class="project-tags">
+                        <span>Deep Learning</span>
+                        <span>CNN</span>
+                        <span>TensorFlow</span>
+                        <span>Computer Vision</span>
+                    </div>
+                </div>
+                <div class="project-img-wrapper">
+                    <img src="assets/images/leaf.png" class="project-img" alt="Leaf Disease System">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+        <div class="section-container">
+            <h2 class="section-title" data-animate>Get In Touch</h2>
+            <div class="contact-card glass-card" data-animate>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Let's Connect!</h3>
+                        <p>I'm always open to discussing new projects, AI opportunities, or collaborations.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="icon">📧</span>
+                                <a href="mailto:thejaskeerat@gmail.com">thejaskeerat@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="icon">💼</span>
+                                <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn Profile</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="icon">💻</span>
+                                <a href="https://github.com/JaskeeratK" target="_blank">GitHub Portfolio</a>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2024 Jaskeerat Kaur. All rights reserved.</p>
+    </footer>
+
+    <!-- Image Preview Modal -->
+    <div id="imgModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="fullImg" alt="Project preview">
+    </div>
+</body>
+</html>
