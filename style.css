@@ -71,7 +71,7 @@ body::after {
     background: url("assets/images/news.jpg") center/cover no-repeat;
     opacity: 0.32;
 
-    filter: blur(18px);
+    /*filter: blur(18px);*/
 
     pointer-events: none;
 
