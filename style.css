@@ -428,15 +428,15 @@ nav ul li a.active {
 }
 
 .exp-card {
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.15);
     padding: 30px;
     border-radius: 18px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
     transition: all 0.3s ease;
 }
 
 .exp-card:hover {
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.20);
     border-color: var(--accent);
     transform: translateX(10px);
 }
